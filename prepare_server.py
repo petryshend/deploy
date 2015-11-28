@@ -4,7 +4,7 @@ import sys
 
 from parameters import USER, HOST, PASSWORD
 
-sudo = 'echo -e "Pi171717" | sudo -S '
+sudo = 'echo -e "%s" | sudo -S ' % PASSWORD
 
 COMMANDS = [
     sudo + 'apt-get install -y curl',

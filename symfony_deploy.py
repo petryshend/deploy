@@ -1,0 +1,33 @@
+#!/usr/bin/python
+import subprocess
+import sys
+
+from parameters import USER, HOST, PASSWORD, APP_FOLDER
+
+sudo = 'echo -e "%s" | sudo -S ' % PASSWORD
+
+COMMANDS = [
+    'cd %s' % APP_FOLDER,
+    'git pull --rebase',
+    'composer install',
+    'php app/console cache:clear --env=dev',
+    sudo + 'chmod -R 777 app/cache app/logs'
+    'php app/console doctrine:schema:update --force'
+]
+
+commands_string = ' && '.join(COMMANDS)
+
+ssh = subprocess.Popen(["ssh", "%s" % HOST, commands_string],
+                       shell=False,
+                       stdout=subprocess.PIPE,
+                       stderr=subprocess.PIPE)
+
+
+result = ssh.stdout.readlines()
+if result == []:
+    error = ssh.stderr.readlines()
+    print >>sys.stderr, "ERROR: %s" % error
+else:
+    print ''.join(result)
+
+
