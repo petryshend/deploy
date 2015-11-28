@@ -11,7 +11,7 @@ COMMANDS = [
     'git pull --rebase',
     'composer install',
     'php app/console cache:clear --env=dev',
-    sudo + 'chmod -R 777 app/cache app/logs'
+    sudo + 'chmod -R 777 app/cache app/logs',
     'php app/console doctrine:schema:update --force'
 ]
 
