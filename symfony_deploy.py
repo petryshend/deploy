@@ -13,7 +13,8 @@ COMMANDS = [
     'php app/console cache:clear --env=prod',
     sudo + 'chmod -R 777 app/cache app/logs',
     'php app/console cache:warmup',
-    'php app/console doctrine:schema:update --force'
+    'php app/console doctrine:schema:update --force',
+    'git reset --hard'
 ]
 
 commands_string = ' && '.join(COMMANDS)
