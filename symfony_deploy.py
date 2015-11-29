@@ -10,8 +10,9 @@ COMMANDS = [
     'cd %s' % APP_FOLDER,
     'git pull --rebase',
     'composer install',
-    'php app/console cache:clear --env=dev',
+    'php app/console cache:clear --env=prod',
     sudo + 'chmod -R 777 app/cache app/logs',
+    'php app/console cache:warmup',
     'php app/console doctrine:schema:update --force'
 ]
 
