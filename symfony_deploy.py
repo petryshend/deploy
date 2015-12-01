@@ -19,7 +19,7 @@ COMMANDS = [
 
 commands_string = ' && '.join(COMMANDS)
 
-ssh = subprocess.Popen(["ssh", "%s" % HOST, commands_string],
+ssh = subprocess.Popen(["ssh", "%s@%s" % (USER, HOST), commands_string],
                        shell=False,
                        stdout=subprocess.PIPE,
                        stderr=subprocess.PIPE)
