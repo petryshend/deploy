@@ -8,6 +8,7 @@ sudo = 'echo -e "%s" | sudo -S ' % PASSWORD
 
 COMMANDS = [
     'cd %s' % APP_FOLDER,
+    'git reset --hard',
     'git pull --rebase',
     'composer install',
     sudo + 'chmod -R 777 app/cache app/logs',
