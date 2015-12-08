@@ -2,7 +2,9 @@
 import subprocess
 import sys
 
-from parameters import USER, HOST, PASSWORD, APP_FOLDER
+from parameters import USER, HOST, APP_FOLDER
+
+PASSWORD = raw_input('Enter server\'s sudo password')
 
 sudo = 'echo -e "%s" | sudo -S ' % PASSWORD
 
